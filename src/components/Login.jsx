@@ -1,53 +1,59 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function Login() {
+const Login = () => {
+  const navigate = useNavigate();
+  const [user, setUser] = useState("");
+  const [pass, setPass] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // 🔒 validação simples (você pode trocar depois por API/backend)
+    if (user === "admin" && pass === "1") {
+      navigate("/menuinterno"); // se login OK → vai para o MenuInterno
+    } else {
+      setError("Usuário ou senha inválidos");
+    }
+  };
+
   return (
-    <div className="flex flex-col w-screen h-screen bg-[#ccccaa] font-sans">
-      {/* Header */}
-      <header className="bg-[#4a2e2e] text-white p-4 flex justify-between items-center">
-        <div className="bg-gray-200 px-3 py-1 font-bold text-black">LOGO</div>
-        <nav className="space-x-4">
-          <a href="#" className="font-semibold">
-            Início
-          </a>
-          <a href="#">Sobre</a>
-          <a href="#">Contato</a>
-        </nav>
-      </header>
-
-      {/* Conteúdo central */}
-      <main className="flex flex-1 items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-xl mb-6 text-[#4a2e2e] font-medium">
-            SIME - SISTEMA DE MATRÍCULA ESCOLAR
-          </h1>
-
-          <div className="bg-[#4a2e2e] text-white p-6 rounded-lg shadow-lg w-80">
-            <label className="block text-left mb-2 text-sm">
-              Login/Usuário:
-            </label>
+    <div className="flex items-center justify-center min-h-screen bg-[#ccccaa] font-sans">
+      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+        <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-4">
+            <label className="block mb-2">Usuário</label>
             <input
               type="text"
-              className="w-full p-2 mb-4 rounded bg-white text-black"
+              value={user}
+              onChange={(e) => setUser(e.target.value)}
+              className="w-full p-2 border rounded"
+              placeholder="Digite seu usuário"
             />
-
-            <label className="block text-left mb-2 text-sm">Senha:</label>
+          </div>
+          <div className="mb-4">
+            <label className="block mb-2">Senha</label>
             <input
               type="password"
-              className="w-full p-2 mb-4 rounded bg-white text-black"
+              value={pass}
+              onChange={(e) => setPass(e.target.value)}
+              className="w-full p-2 border rounded"
+              placeholder="Digite sua senha"
             />
-
-            <button className="w-full bg-[#f8cfa0] text-[#4a2e2e] font-semibold py-2 rounded hover:bg-[#f5b97a] transition">
-              Entrar
-            </button>
           </div>
-        </div>
-      </main>
-
-      {/* Footer */}
-      <footer className="bg-[#4a2e2e] text-white text-center p-4">
-        © 2025 - Todos os direitos reservados
-      </footer>
+          {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
+          <button
+            type="submit"
+            className="w-full bg-[#4b2e2e] text-white py-2 px-4 rounded hover:bg-[#3a2323]"
+          >
+            Entrar
+          </button>
+        </form>
+      </div>
     </div>
   );
-}
+};
+
+export default Login;
