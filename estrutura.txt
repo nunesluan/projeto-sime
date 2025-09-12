@@ -1,0 +1,16 @@
+src/
+├── assets/              # Imagens, ícones, fontes, arquivos estáticos
+├── components/          # Componentes reutilizáveis
+│   ├── forms/           # Campos de formulário (Input, Select, Checkbox, etc.)
+│   ├── navigation/      # Navegação (Navbar, Sidebar, Breadcrumbs, etc.)
+│   ├── layout/          # Estrutura (Header, Footer, Container, Grid, etc.)
+│   └── ui/              # Botões, Cards, Modal, Alert, Spinner...
+├── hooks/               # Hooks customizados
+├── pages/               # Páginas principais (Home, Login, Dashboard, etc.)
+│   └── Dashboard/       # Subpastas por página, se for grande
+├── services/            # Conexão com APIs, chamadas externas
+├── context/             # Context API (ex: autenticação, tema)
+├── utils/               # Funções auxiliares (formatar CPF, datas, validações)
+├── styles/              # Estilos globais (Tailwind configs, CSS extra, etc.)
+├── App.jsx
+└── main.jsx
