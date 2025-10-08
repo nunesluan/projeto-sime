@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Input from "../components/forms/Input";
 import Textarea from "../components/forms/TextArea";
+// import { buscarIdPorNome } from "../services/alunoService";
+import BuscarIdPorNome from "../components/forms/BuscarIdPorNome";
 
 function Select({ label, value, onChange, options, error }) {
   return (
@@ -61,18 +63,7 @@ export default function MatriculaAluno() {
         </h3>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <Input
-            label="ID"
-            value={form.id}
-            placeholder="Gerado automaticamente"
-            onChange={(e) => handleChange("id", e.target.value)}
-          />
-          <Input
-            label="ID do Aluno"
-            value={form.idAluno}
-            placeholder="Ex: 1"
-            onChange={(e) => handleChange("idAluno", e.target.value)}
-          />
+          <BuscarIdPorNome form={form} handleChange={handleChange} />
           <Input
             label="ID da Turma"
             value={form.idTurma}

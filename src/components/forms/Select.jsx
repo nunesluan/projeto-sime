@@ -1,8 +1,14 @@
 // src/components/Select.jsx
-export default function Select({ label, value, onChange, options, error }) {
+export default function Select({
+  label,
+  value,
+  onChange,
+  options = [],
+  error,
+}) {
   return (
     <div className="mb-4 flex flex-col">
-      <label className="mb-1 font-medium">{label}</label>
+      {label && <label className="mb-1 font-medium">{label}</label>}
       <select
         value={value}
         onChange={onChange}
@@ -12,8 +18,8 @@ export default function Select({ label, value, onChange, options, error }) {
       >
         <option value="">Selecione</option>
         {options.map((opt, idx) => (
-          <option key={idx} value={opt}>
-            {opt}
+          <option key={idx} value={opt.value}>
+            {opt.label}
           </option>
         ))}
       </select>

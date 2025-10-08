@@ -50,6 +50,7 @@ export default function CadastroAluno() {
       } else {
         setMensagem(data.erro || "Erro ao cadastrar aluno");
       }
+      // eslint-disable-next-line no-unused-vars
     } catch (err) {
       setMensagem("Erro de conexão com o servidor");
     }

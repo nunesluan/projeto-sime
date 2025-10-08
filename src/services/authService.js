@@ -18,6 +18,7 @@ export async function login(email, senha) {
     } else {
       return { success: false, message: data.mensagem || "Erro no login" };
     }
+    // eslint-disable-next-line no-unused-vars
   } catch (error) {
     return { success: false, message: "Erro de conexão com o servidor" };
   }
